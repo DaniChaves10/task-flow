@@ -122,7 +122,7 @@ export function useRecoilValue<T>(node: RecoilValue<T>): T {
         // recompute deps on change
         if (node.kind === "selector") {
           store.getValue(node);
-          // @ts-expect-error access private via any
+          
           depsRef.current = (store as any).deps.get(node.key) ?? new Set();
           subscribeAll();
         }
@@ -131,7 +131,7 @@ export function useRecoilValue<T>(node: RecoilValue<T>): T {
       // initial deps for selector
       if (node.kind === "selector") {
         store.getValue(node);
-        // @ts-expect-error
+        
         depsRef.current = (store as any).deps.get(node.key) ?? new Set();
       }
       subscribeAll();
