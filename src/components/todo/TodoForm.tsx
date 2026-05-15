@@ -15,7 +15,7 @@ export function TodoForm() {
     if (!trimmed) return;
     setTodos([
       ...todos,
-      { id: crypto.randomUUID(), text: trimmed, completed: false },
+      { id: Date.now().toString(), text: trimmed, completed: false },
     ]);
     setText("");
   };
